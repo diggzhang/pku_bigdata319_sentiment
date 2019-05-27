@@ -3,33 +3,57 @@
 import sys
 import jieba
 import pandas
-import jieba.analyse
 
 
 SORUCE_FILE = "clean_data.csv"
 
 
 def positive_words(positive_comment_df):
+    words_list = []
     for row in positive_comment_df:
-        words = jieba.cut(row)
+        words = jieba.cut(row, cut_all=True)
         for word in words:
-            print(word)
+            words_list.append(word)
+    return words_list
 
-def negtive_words():
-    return 
+
+def negtive_words(negative_comment_df):
+    words_list = []
+    for row in negative_comment_df:
+        words = jieba.cut(row, cut_all=True)
+        for word in words:
+            words_list.append(word)
+    return words_list
+
+
+def build_word_dict(positive_comment_df, negative_comment_df):
+    pos_list = positive_words(positive_comment_df)
+    neg_list = negtive_words(negative_comment_df)
+
+    with open("positive_dict.txt", "w") as target:
+        for word in pos_list:
+            target.write(word + "\n")
+
+    with open("negtive_dict.txt", "w") as target:
+        for word in neg_list:
+            target.write(word + "\n")
+
 
 def main():
     soruce_file_df =  pandas.read_csv(SORUCE_FILE, header=None, names=['a', 'b', 'comment', 'frequence', 'sentiment'])
     positive_comment_df = soruce_file_df[soruce_file_df['sentiment'] == 1]['comment']
     negative_comment_df = soruce_file_df[soruce_file_df['sentiment'] == 0]['comment']
 
-    with open("positive_comment.txt", "a") as target:
-        target.write(positive_comment_df.to_string(index=False))
+    # 构建字典
+    build_word_dict(positive_comment_df, negative_comment_df)
 
-    positive_words(positive_comment_df)
 
-    with open("negtive_comment.txt", "a") as target:
-        target.write(negative_comment_df.to_string(index=False))
+    # with open("positive_comment.txt", "a") as target:
+    #     target.write(positive_comment_df.to_string(index=False))
+
+
+    # with open("negtive_comment.txt", "a") as target:
+    #     target.write(negative_comment_df.to_string(index=False))
 
     # print(neg_comment_df)
     # comment_df = soruce_file_df[2]
