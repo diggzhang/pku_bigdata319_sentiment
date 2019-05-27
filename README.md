@@ -33,3 +33,7 @@ conda deactivate
 
 1. 文本内容需要分词处理
 2. 商品下文本内容出现次数，暗示是用`TF-IDF`  
+
+## 参考资源
+
+1. 停用词词库 https://github.com/wangye8899/stopwords
