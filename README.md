@@ -20,3 +20,16 @@
 3. 训练集要求：以前6000条为训练数据，之后的数据为测试数据
 4. 输出：进行文本的情感分类，自行选择模型，算法，
 5. 作业要求：最后要求提交代码（详细注释），准确率截图
+
+## Setup
+
+```
+conda create --name pku_bigdata319_sentiment
+conda activate pku_bigdata319_sentiment
+conda deactivate
+```
+
+## 需求分析
+
+1. 文本内容需要分词处理
+2. 商品下文本内容出现次数，暗示是用`TF-IDF`  
