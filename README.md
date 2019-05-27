@@ -37,3 +37,4 @@ conda deactivate
 ## 参考资源
 
 1. 停用词词库 https://github.com/wangye8899/stopwords
+2. 有情感预测的现成库 snownlp 看其源码是用了贝叶斯
