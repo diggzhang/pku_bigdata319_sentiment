@@ -133,6 +133,3 @@ if __name__ == "__main__":
     # sentiment_df = soruce_file_df[4]
     # print(comment_df, product_frequency, sentiment_df)
     # pos_comment(sentiment_df)
-
-if __name__ == "__main__":
-    main()
